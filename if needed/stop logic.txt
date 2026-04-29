@@ -1,0 +1,30 @@
+    if in_floor_1:
+        pos[1] = list(floor_pos_1_tpl)
+        if state == "moving_up":
+            state != "moving_up"
+            state = "Idle_1st"
+            floor = 1
+            pygame.time.wait(100)
+            if state == "Idle_1st" and floor == 1:
+                elevator_speed = 0
+                pos[1] = elevator_speed * dt
+    if in_floor_2:
+        pos[1] = list(floor_pos_2_tpl)
+        if state == "moving_up":
+            state != "moving_up"
+            state = "Idle_2nd"
+            floor = 2
+            pygame.time.wait(100)
+            if state == "Idle_2nd" and floor == 2:
+                elevator_speed = 0
+                pos[1] = elevator_speed * dt
+    if in_floor_3:
+        pos[1] = list(floor_pos_3_tpl)
+        if state == "moving_up":
+            state != "moving_up"
+            state = "Idle_3rd"
+            floor = 3
+            pygame.time.wait(100) 
+            if state == "Idle_3rd" and floor == 3:
+                elevator_speed = 0
+                pos[1] = elevator_speed * dt
