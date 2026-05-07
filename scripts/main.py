@@ -19,6 +19,8 @@ animation_cooldown = 200
 idle_x = 560
 moving_x = 560 + 18
 
+x_18 = 18
+
 state = "Idle_ground"
 pos_tpl = (560, 580)
 pos = list(pos_tpl)
@@ -40,9 +42,11 @@ floor_moving_up_1 = floor_pos_1[1] - 40
 floor_moving_up_2 = floor_pos_2[1] - 40
 floor_moving_up_3 = floor_pos_3[1] - 40
 
-floor_moving_down_1 = floor_pos_1[1] + 40
-floor_moving_down_2 = floor_pos_2[1] + 40
-floor_moving_down_3 = floor_pos_3[1] + 40
+floor_moving_down_1 = floor_pos_1[1]
+floor_moving_down_2 = floor_pos_2[1]
+floor_moving_down_3 = floor_pos_3[1]
+
+floor_moving_down_0 = pos[1]
 
 elevator_speed = 10
 
@@ -63,65 +67,15 @@ while True:
                     state = "moving_up"
                     pos = [moving_x, pos[1] - 40]
                     frame = 0
-                # else:
-                #     pos = list(pos_tpl)
-                #     if floor == 0:
-                #         state = "Idle_ground"
-                #     elif floor == 1:
-                #         state = "Idle_1st"
-                #     elif floor == 2:
-                #         state = "Idle_2nd"
-                #     elif floor == 3:
-                #         state = "Idle_3rd"
                 frame = 0
             if event.key == pygame.K_DOWN:
                 elevator_speed = 10
-                if state != "moving_down" and state in ("Idle_1st", "Idle_2nd", "Idle_3rd"):
+                if state != "moving_down" and state in ("Idle_ground", "Idle_1st", "Idle_2nd", "Idle_3rd"):
                     state = "moving_down"
-                    pos = [moving_x, pos[1] + 40]
+                    pos = [idle_x + x_18, pos[1]]
                     frame = 0
-                # else:
-                #     pos = list(pos_tpl)
-                #     if floor == 0:
-                #         state = "Idle_ground"
-                #     elif floor == 1:
-                #         state = "Idle_1st"
-                #     elif floor == 2:
-                #         state = "Idle_2nd"
-                #     elif floor == 3:
-                #         state = "Idle_3rd"
                 frame = 0
-            # if state == "Idle_1st" and floor == 1 and event.key == pygame.K_UP:
-            #     state = "moving_up"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos - 40]
-            #     frame = 0
-            # elif state == "Idle_2nd" and floor == 2 and event.key == pygame.K_UP:
-            #     state = "moving_up"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos - 40]
-            #     frame = 0
-            # elif state == "Idle_3rd" and floor == 3 and event.key == pygame.K_UP:
-            #     state = "moving_up"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos - 40]
-            #     frame = 0
-        
-            # if state == "Idle_1st" and floor == 1 and event.key == pygame.K_DOWN:
-            #     state = "moving_down"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos + 40]
-            #     frame = 0
-            # elif state == "Idle_2nd" and floor == 2 and event.key == pygame.K_DOWN:
-            #     state = "moving_down"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos + 40]
-            #     frame = 0
-            # elif state == "Idle_3rd" and floor == 3 and event.key == pygame.K_DOWN:
-            #     state = "moving_down"
-            #     elevator_speed = 10
-            #     pos = [moving_x, current_pos + 40]
-            #     frame = 0                                
+                   
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
                 print(event.pos)
@@ -143,15 +97,13 @@ while True:
     else:
         frame = 0
 
-    image = StateSystem(state, frame)
-    screen.blit(image, pos)
-
-    print(round(pos[1]))
+    # print(round(pos[1]))
 
     current_pos = pos[1]
 
     if state == "moving_up":
         pos[1] -= elevator_speed * dt * 10
+        current_pos = pos[1] 
         if abs(current_pos - floor_moving_up_1) < 1.6 and floor < 1:
             in_floor_1 = True
         elif abs(current_pos - floor_moving_up_2) < 1.6 and floor < 2:
@@ -161,14 +113,15 @@ while True:
 
     elif state == "moving_down":
         pos[1] += elevator_speed * dt * 10
-        if abs(current_pos - floor_moving_down_1) < 1.6 and floor > 1:
+        current_pos = pos[1] + 40
+        if abs(current_pos - floor_moving_down_1) < 1.6 and floor >= 1:
             in_floor_1 = True
-        elif abs(current_pos - floor_moving_down_2) < 1.6 and floor > 2:
+        elif abs(current_pos - floor_moving_down_2) < 1.6 and floor >= 2:
             in_floor_2 = True
-        elif abs(current_pos - floor_moving_down_3) < 1.6 and floor > 3:
+        elif abs(current_pos - floor_moving_down_3) < 1.6 and floor >= 3:
             in_floor_3 = True
 
-    if state == "moving_down" and pos[1] >= pos_tpl[1]:
+    if state == "moving_down" and pos[1] + 40 >= pos_tpl[1]:
         pos = [idle_x, pos_tpl[1]]
         state = "Idle_ground"
         floor = 0
@@ -196,4 +149,6 @@ while True:
         elevator_speed = 0
         in_floor_3 = False
 
+    image = StateSystem(state, frame)
+    screen.blit(image, pos)    
     pygame.display.update()
