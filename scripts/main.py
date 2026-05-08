@@ -46,9 +46,9 @@ floor_moving_down_1 = floor_pos_1[1]
 floor_moving_down_2 = floor_pos_2[1]
 floor_moving_down_3 = floor_pos_3[1]
 
-floor_moving_down_0 = pos[1]
-
 elevator_speed = 10
+
+moving_down_trigger = False
 
 while True:
     dt = clock.tick(60) / 1000
@@ -70,11 +70,16 @@ while True:
                 frame = 0
             if event.key == pygame.K_DOWN:
                 elevator_speed = 10
-                if state != "moving_down" and state in ("Idle_ground", "Idle_1st", "Idle_2nd", "Idle_3rd"):
+                if state != "moving_down" and state in ("Idle_1st", "Idle_2nd", "Idle_3rd"):
                     state = "moving_down"
                     pos = [idle_x + x_18, pos[1]]
+                    moving_down_trigger = True
                     frame = 0
                 frame = 0
+            if state == "moving_down":
+                if moving_down_trigger:
+                    pos[1] -= 40
+                    moving_down_trigger = False
                    
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
