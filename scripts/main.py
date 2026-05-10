@@ -34,9 +34,9 @@ state = "Idle_ground"
 pos_tpl = (560, 580)
 pos = list(pos_tpl)
 
-floor_pos_1_tpl = (560, 450)
-floor_pos_2_tpl = (560, 350)
-floor_pos_3_tpl = (560, 250)
+floor_pos_1_tpl = (560, 480)
+floor_pos_2_tpl = (560, 380)
+floor_pos_3_tpl = (560, 280)
 
 floor_pos_1 = list(floor_pos_1_tpl)
 floor_pos_2 = list(floor_pos_2_tpl)
