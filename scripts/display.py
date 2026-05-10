@@ -62,3 +62,31 @@ def RenderElevatorDown():
         animation_list.append(SpriteSheet.get_image(i, width, height, scale, colorkey, x_offset))
 
     return animation_list
+
+# Render funcs for elevator buttons
+def RenderButtonFloor0(screen, art):
+    screen.blit(art["button1"], (560 - 20, 642 - 8))
+def RenderButtonFloor1(screen, art):
+    screen.blit(art["button1"], (560 - 20, 495))
+def RenderButtonFloor2(screen, art):
+    screen.blit(art["button1"], (560 - 20, 395))
+def RenderButtonFloor3(screen, art):
+    screen.blit(art["button1"], (560 - 20, 295))
+
+def RenderButtonMovingUp(screen, art):
+    screen.blit(art["button2"], (560 - 20, 642 - 8))
+def RenderButtonMovingUp1(screen, art):
+    screen.blit(art["button1"], (560 - 20, 495))
+def RenderButtonMovingUp2(screen, art):
+    screen.blit(art["button1"], (560 - 20, 395))
+def RenderButtonMovingUp3(screen, art):
+    screen.blit(art["button1"], (560 - 20, 295))
+
+def RenderButtonMovingDown(screen, art):
+    screen.blit(art["button3"], (560 - 20, 642 - 8))
+def RenderButtonMovingDown1(screen, art):
+    screen.blit(art["button3"], (560 - 20, 495))
+def RenderButtonMovingDown2(screen, art):
+    screen.blit(art["button3"], (560 - 20, 395))
+def RenderButtonMovingDown3(screen, art):
+    screen.blit(art["button3"], (560 - 20, 295))

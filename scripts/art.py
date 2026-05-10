@@ -33,3 +33,11 @@ def RenderElevatorIdle3rd():
     return {
         "Idle_3rd": pygame.transform.scale(pygame.image.load(resource_path("data/Sprite-0001_4.png")).convert_alpha(), (64 * 2, 64 * 2))
     }
+
+# Buttons
+def Buttons():
+    return {
+        "button1": pygame.image.load(resource_path("data/button1.png")).convert_alpha(),
+        "button2": pygame.image.load(resource_path("data/button2.png")).convert_alpha(),
+        "button3": pygame.image.load(resource_path("data/button3.png")).convert_alpha()
+    }

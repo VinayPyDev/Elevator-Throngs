@@ -1,0 +1,35 @@
+            # if event.key == pygame.K_UP:
+            #     if floor == 0 and state == "Idle_ground":
+            #         state = "moving_up"
+            #         if state == "moving_up":
+            #             RenderButtonMovingUp(screen, art)
+            #     if floor == 1 and state == "Idle_1st":
+            #         state = "moving_up"
+            #         if state == "moving_up":
+            #             RenderButtonMovingUp1(screen, art)
+            #     if floor == 2 and state == "Idle_2nd":
+            #         state = "moving_up"
+            #         if state == "moving_up":
+            #             RenderButtonMovingUp2(screen, art)
+            #     if floor == 3 and state == "Idle_3rd":
+            #         state = "moving_up"
+            #         if state == "moving_up":
+            #             RenderButtonMovingUp3(screen, art)
+
+            # if event.key == pygame.K_DOWN:
+            #     if floor == 0 and state == "Idle_ground":
+            #         state = "moving_down"
+            #         if state == "moving_down":
+            #             RenderButtonMovingDown(screen, art)
+            #     if floor == 1 and state == "Idle_1st":
+            #         state = "moving_down"
+            #         if state == "moving_down":
+            #             RenderButtonMovingDown1(screen, art)
+            #     if floor == 2 and state == "Idle_2nd":
+            #         state = "moving_down"
+            #         if state == "moving_down":
+            #             RenderButtonMovingDown2(screen, art)
+            #     if floor == 3 and state == "Idle_3rd":
+            #         state = "moving_down"
+            #         if state == "moving_down":
+            #             RenderButtonMovingDown3(screen, art)

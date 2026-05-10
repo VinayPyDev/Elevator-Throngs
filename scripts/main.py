@@ -1,8 +1,13 @@
 import pygame
 import sys
 
-from display import RenderElevatorUp
+# State system import
 from state import StateSystem, sprites
+
+# Asset imports
+from art import Buttons
+from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
+from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3
 
 pygame.init()
 
@@ -11,6 +16,10 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Elevator Throngs")
 clock = pygame.time.Clock()
 dt = 0
+
+art = {}
+
+art.update(Buttons())
 
 frame = 0
 last_update = pygame.time.get_ticks()
@@ -89,6 +98,30 @@ while True:
                 pygame.quit()
                 sys.exit()
 
+    RenderButtonFloor0(screen, art)
+    RenderButtonFloor1(screen, art)
+    RenderButtonFloor2(screen, art)
+    RenderButtonFloor3(screen, art)
+
+    if state == "moving_up":
+        if floor == 0:
+            RenderButtonMovingUp(screen, art)
+        elif floor == 1:
+            RenderButtonMovingUp1(screen, art)
+        elif floor == 2:
+            RenderButtonMovingUp2(screen, art)
+        elif floor == 3:
+            RenderButtonMovingUp3(screen, art)
+    if state == "moving_down":
+        if floor == 0:
+            RenderButtonMovingDown(screen, art)
+        elif floor == 1:
+            RenderButtonMovingDown1(screen, art)
+        elif floor == 2:
+            RenderButtonMovingDown2(screen, art)
+        elif floor == 3:
+            RenderButtonMovingDown3(screen, art)
+
     current = sprites[state]
 
     if isinstance(current, list):
@@ -101,8 +134,6 @@ while True:
                 frame = 0
     else:
         frame = 0
-
-    # print(round(pos[1]))
 
     current_pos = pos[1]
 
@@ -156,4 +187,5 @@ while True:
 
     image = StateSystem(state, frame)
     screen.blit(image, pos)    
+
     pygame.display.update()
