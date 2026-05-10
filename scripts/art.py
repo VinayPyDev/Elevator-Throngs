@@ -41,3 +41,11 @@ def Buttons():
         "button2": pygame.image.load(resource_path("data/button2.png")).convert_alpha(),
         "button3": pygame.image.load(resource_path("data/button3.png")).convert_alpha()
     }
+
+def FloorMarkers():
+    return {
+        "floor0marker": pygame.image.load(resource_path("data/floor0marker.png")).convert_alpha(),
+        "floor1marker": pygame.image.load(resource_path("data/floor1marker.png")).convert_alpha(),
+        "floor2marker": pygame.image.load(resource_path("data/floor2marker.png")).convert_alpha(),
+        "floor3marker": pygame.image.load(resource_path("data/floor3marker.png")).convert_alpha()
+    }
