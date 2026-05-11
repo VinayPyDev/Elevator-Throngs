@@ -44,8 +44,8 @@ def Buttons():
 
 def FloorMarkers():
     return {
-        "floor0marker": pygame.image.load(resource_path("data/floor0marker.png")).convert_alpha(),
-        "floor1marker": pygame.image.load(resource_path("data/floor1marker.png")).convert_alpha(),
-        "floor2marker": pygame.image.load(resource_path("data/floor2marker.png")).convert_alpha(),
-        "floor3marker": pygame.image.load(resource_path("data/floor3marker.png")).convert_alpha()
+        "floor0marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor0marker.png")).convert_alpha(), (150, 150)),
+        "floor1marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor1marker.png")).convert_alpha(), (150, 150)),
+        "floor2marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor2marker.png")).convert_alpha(), (150, 150)),
+        "floor3marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor3marker.png")).convert_alpha(), (150, 150))
     }

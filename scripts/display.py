@@ -90,3 +90,13 @@ def RenderButtonMovingDown2(screen, art):
     screen.blit(art["button3"], (560 - 20, 426))
 def RenderButtonMovingDown3(screen, art):
     screen.blit(art["button3"], (560 - 20, 326))
+
+# Floor Markers
+def RenderFloor0Marker(screen, art):
+    screen.blit(art["floor0marker"], (1130, 0))
+def RenderFloor1Marker(screen, art):
+    screen.blit(art["floor1marker"], (1130, 0))
+def RenderFloor2Marker(screen, art):
+    screen.blit(art["floor2marker"], (1130, 0))
+def RenderFloor3Marker(screen, art):
+    screen.blit(art["floor3marker"], (1130, 0))
