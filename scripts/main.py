@@ -5,9 +5,10 @@ import sys
 from state import StateSystem, sprites
 
 # Asset imports
-from art import Buttons, FloorMarkers
+from art import Buttons, FloorMarkers, SourceBoard
 from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
 from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
+from display import RenderSourceBoard
 
 pygame.init()
 
@@ -21,6 +22,7 @@ art = {}
 
 art.update(Buttons())
 art.update(FloorMarkers())
+art.update(SourceBoard())
 
 frame = 0
 last_update = pygame.time.get_ticks()
@@ -132,6 +134,8 @@ while True:
     elif floor == 3:
         RenderFloor3Marker(screen, art)
 
+    RenderSourceBoard(screen, art)
+    
     current = sprites[state]
 
     if isinstance(current, list):

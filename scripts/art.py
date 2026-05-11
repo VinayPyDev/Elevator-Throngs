@@ -49,3 +49,19 @@ def FloorMarkers():
         "floor2marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor2marker.png")).convert_alpha(), (150, 150)),
         "floor3marker": pygame.transform.scale(pygame.image.load(resource_path("data/floor3marker.png")).convert_alpha(), (150, 150))
     }
+
+def SourceBoard():
+    return {
+        "source_board": pygame.image.load(resource_path("data/source_board.png")).convert_alpha()
+    }
+
+# Electricity Meter
+def ElectricityMeter():
+    return {
+        "elec0": pygame.image.load(resource_path("data/noelec.png")).convert_alpha(),
+        "elec1": pygame.image.load(resource_path("data/elec1.png")).convert_alpha(),
+        "elec2": pygame.image.load(resource_path("data/elec2.png")).convert_alpha(),
+        "elec3": pygame.image.load(resource_path("data/elec3.png")).convert_alpha(),
+        "elec4": pygame.image.load(resource_path("data/elec4.png")).convert_alpha(),
+        "elec5": pygame.image.load(resource_path("data/elec5.png")).convert_alpha()
+    }

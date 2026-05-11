@@ -100,3 +100,23 @@ def RenderFloor2Marker(screen, art):
     screen.blit(art["floor2marker"], (1130, 0))
 def RenderFloor3Marker(screen, art):
     screen.blit(art["floor3marker"], (1130, 0))
+
+# Source Board
+def RenderSourceBoard(screen, art):
+    screen.blit(art["source_board"], (1120, 200))
+
+# Electricty Meter
+def RenderNoElectricity(screen, art):
+    screen.blit(art["elec0"], (1140, 200))
+def Render1Electricity(screen, art):
+    screen.blit(art["elec1"], (1140, 200))
+def Render2Electricity(screen, art):
+    screen.blit(art["elec2"], (1140, 200))
+def Render3Electricity(screen, art):
+    screen.blit(art["elec3"], (1140, 200))
+def Render4Electricity(screen, art):
+    screen.blit(art["elec4"], (1140, 200))
+def Render5Electricity(screen, art):
+    screen.blit(art["elec5"], (1140, 200))
+
+# Weight Meter
