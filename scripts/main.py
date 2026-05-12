@@ -5,10 +5,16 @@ import sys
 from state import StateSystem, sprites
 
 # Asset imports
-from art import Buttons, FloorMarkers, SourceBoard
+from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter
 from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
 from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
 from display import RenderSourceBoard
+# Electricity import from display
+from display import RenderNoElectricity, Render1Electricity, Render2Electricity, Render3Electricity, Render4Electricity, Render5Electricity
+# Wt import from display
+from display import Render150Weight, Render250Weight, Render300Weight, Render350Weight, Render400Weight
+# Repair import from display
+from display import Render0Repair, Render1Repair, Render2Repair, Render3Repair, Render4Repair, Render5Repair
 
 pygame.init()
 
@@ -23,6 +29,10 @@ art = {}
 art.update(Buttons())
 art.update(FloorMarkers())
 art.update(SourceBoard())
+
+art.update(ElectricityMeter())
+art.update(WeightMeter())
+art.update(RepairMeter())
 
 frame = 0
 last_update = pygame.time.get_ticks()

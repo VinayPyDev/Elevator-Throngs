@@ -104,8 +104,8 @@ def RenderFloor3Marker(screen, art):
 # Source Board
 def RenderSourceBoard(screen, art):
     screen.blit(art["source_board"], (1120, 200))
-
-# Electricty Meter
+# Resources 
+    # Electricty Meter
 def RenderNoElectricity(screen, art):
     screen.blit(art["elec0"], (1140, 200))
 def Render1Electricity(screen, art):
@@ -118,5 +118,27 @@ def Render4Electricity(screen, art):
     screen.blit(art["elec4"], (1140, 200))
 def Render5Electricity(screen, art):
     screen.blit(art["elec5"], (1140, 200))
-
-# Weight Meter
+    # Weight Meter
+def Render150Weight(screen, art):
+    screen.blit(art["wt150"], (1140, 350))
+def Render250Weight(screen, art):
+    screen.bilt(art["wt250"], (1140, 350))
+def Render300Weight(screen, art):
+    screen.blit(art["wt300"], (1140, 350))
+def Render350Weight(screen, art):
+    screen.blit(art["wt350"], (1140, 350))
+def Render400Weight(screen, art):
+    screen.blit(art["wt400"], (1140, 350)) 
+    # Repair Meter
+def Render0Repair(screen, art):
+    screen.blit(art["repair0"], (1140, 500))
+def Render1Repair(screen, art):
+    screen.blit(art["repair1"], (1140, 500))
+def Render2Repair(screen, art):
+    screen.blit(art["repair2"], (1140, 500))
+def Render3Repair(screen, art):
+    screen.blit(art["repair3"], (1140, 500))
+def Render4Repair(screen, art):
+    screen.blit(art["repair4"], (1140, 500))
+def Render5Repair(screen, art):
+    screen.blit(art["repair5"], (1140, 500))

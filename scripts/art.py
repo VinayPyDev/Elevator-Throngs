@@ -54,8 +54,8 @@ def SourceBoard():
     return {
         "source_board": pygame.image.load(resource_path("data/source_board.png")).convert_alpha()
     }
-
-# Electricity Meter
+# Resources
+    # Electricity Meter
 def ElectricityMeter():
     return {
         "elec0": pygame.image.load(resource_path("data/noelec.png")).convert_alpha(),
@@ -64,4 +64,25 @@ def ElectricityMeter():
         "elec3": pygame.image.load(resource_path("data/elec3.png")).convert_alpha(),
         "elec4": pygame.image.load(resource_path("data/elec4.png")).convert_alpha(),
         "elec5": pygame.image.load(resource_path("data/elec5.png")).convert_alpha()
+    }
+
+    # Weight Meter
+def WeightMeter():
+    return {
+        "wt150": pygame.image.load(resource_path("data/wt150.png")).convert_alpha(),
+        "wt250": pygame.image.load(resource_path("data/wt250.png")).convert_alpha(),
+        "wt300": pygame.image.load(resource_path("data/wt300.png")).convert_alpha(),
+        "wt350": pygame.image.load(resource_path("data/wt350.png")).convert_alpha(),
+        "wt400": pygame.image.load(resource_path("data/wt400.png")).convert_alpha()
+    }
+
+    # Repair Meter
+def RepairMeter():
+    return {
+        "repair0": pygame.image.load(resource_path("data/repair0.png")).convert_alpha(),
+        "repair1": pygame.image.load(resource_path("data/repair1.png")).convert_alpha(),
+        "repair2": pygame.image.load(resource_path("data/repair2.png")).convert_alpha(),
+        "repair3": pygame.image.load(resource_path("data/repair3.png")).convert_alpha(),
+        "repair4": pygame.image.load(resource_path("data/repair4.png")).convert_alpha(),
+        "repair5": pygame.image.load(resource_path("data/repair5.png")).convert_alpha()
     }
