@@ -9,6 +9,7 @@ from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMete
 from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
 from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
 from display import RenderSourceBoard
+
 # Electricity import from display
 from display import RenderNoElectricity, Render1Electricity, Render2Electricity, Render3Electricity, Render4Electricity, Render5Electricity
 # Wt import from display
@@ -33,6 +34,10 @@ art.update(SourceBoard())
 art.update(ElectricityMeter())
 art.update(WeightMeter())
 art.update(RepairMeter())
+
+electricity = 3
+weight = 150
+repair = 3
 
 frame = 0
 last_update = pygame.time.get_ticks()
@@ -110,7 +115,7 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
-
+                
     RenderButtonFloor0(screen, art)
     RenderButtonFloor1(screen, art)
     RenderButtonFloor2(screen, art)
@@ -145,6 +150,43 @@ while True:
         RenderFloor3Marker(screen, art)
 
     RenderSourceBoard(screen, art)
+
+    if electricity == 0:
+        RenderNoElectricity(screen, art)
+    elif electricity == 1:
+        Render1Electricity(screen, art)
+    elif electricity == 2:
+        Render2Electricity(screen, art)
+    elif electricity == 3:
+        Render3Electricity(screen, art)
+    elif electricity == 4:
+        Render4Electricity(screen, art)
+    elif electricity == 5:
+        Render5Electricity(screen, art)
+
+    if weight == 150:
+        Render150Weight(screen, art)
+    elif weight == 250:
+        Render250Weight(screen, art)
+    elif weight == 300:
+        Render300Weight(screen, art)
+    elif weight == 350:
+        Render350Weight(screen, art)
+    elif weight == 400:
+        Render400Weight(screen, art)
+
+    if repair == 0:
+        Render0Repair(screen, art)
+    elif repair == 1:
+        Render1Repair(screen, art)
+    elif repair == 2:
+        Render2Repair(screen, art)
+    elif repair == 3:
+        Render3Repair(screen, art)
+    elif repair == 4:
+        Render4Repair(screen, art)
+    elif repair == 5:
+        Render5Repair(screen, art)
     
     current = sprites[state]
 

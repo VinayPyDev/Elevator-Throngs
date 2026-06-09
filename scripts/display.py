@@ -107,28 +107,28 @@ def RenderSourceBoard(screen, art):
 # Resources 
     # Electricty Meter
 def RenderNoElectricity(screen, art):
-    screen.blit(art["elec0"], (1140, 200))
+    screen.blit(art["elec0"], (1140, 225))
 def Render1Electricity(screen, art):
-    screen.blit(art["elec1"], (1140, 200))
+    screen.blit(art["elec1"], (1140, 225))
 def Render2Electricity(screen, art):
-    screen.blit(art["elec2"], (1140, 200))
+    screen.blit(art["elec2"], (1140, 225))
 def Render3Electricity(screen, art):
-    screen.blit(art["elec3"], (1140, 200))
+    screen.blit(art["elec3"], (1140, 225))
 def Render4Electricity(screen, art):
-    screen.blit(art["elec4"], (1140, 200))
+    screen.blit(art["elec4"], (1140, 225))
 def Render5Electricity(screen, art):
-    screen.blit(art["elec5"], (1140, 200))
+    screen.blit(art["elec5"], (1140, 225))
     # Weight Meter
 def Render150Weight(screen, art):
-    screen.blit(art["wt150"], (1140, 350))
+    screen.blit(art["wt150"], (1140, 365))
 def Render250Weight(screen, art):
-    screen.bilt(art["wt250"], (1140, 350))
+    screen.bilt(art["wt250"], (1140, 365))
 def Render300Weight(screen, art):
-    screen.blit(art["wt300"], (1140, 350))
+    screen.blit(art["wt300"], (1140, 365))
 def Render350Weight(screen, art):
-    screen.blit(art["wt350"], (1140, 350))
+    screen.blit(art["wt350"], (1140, 365))
 def Render400Weight(screen, art):
-    screen.blit(art["wt400"], (1140, 350)) 
+    screen.blit(art["wt400"], (1140, 365)) 
     # Repair Meter
 def Render0Repair(screen, art):
     screen.blit(art["repair0"], (1140, 500))
