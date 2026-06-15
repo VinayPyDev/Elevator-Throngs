@@ -41,6 +41,11 @@ def Buttons():
         "button2": pygame.image.load(resource_path("data/button2.png")).convert_alpha(),
         "button3": pygame.image.load(resource_path("data/button3.png")).convert_alpha()
     }
+# Elevator Line
+def ElevatorLine():
+    return {
+        "line": pygame.transform.scale(pygame.image.load(resource_path("data/floor line2.png")).convert_alpha(), (155, 720))
+    }
 
 def FloorMarkers():
     return {
@@ -86,3 +91,5 @@ def RepairMeter():
         "repair4": pygame.transform.scale(pygame.image.load(resource_path("data/repair4.png")).convert_alpha(), (100, 100)),
         "repair5": pygame.transform.scale(pygame.image.load(resource_path("data/repair5.png")).convert_alpha(), (100, 100))
     }
+
+# workers 

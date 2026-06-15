@@ -5,10 +5,10 @@ import sys
 from state import StateSystem, sprites
 
 # Asset imports
-from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter
+from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter, ElevatorLine
 from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
 from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
-from display import RenderSourceBoard
+from display import RenderSourceBoard, RenderElevatorLine
 
 # Electricity import from display
 from display import RenderNoElectricity, Render1Electricity, Render2Electricity, Render3Electricity, Render4Electricity, Render5Electricity
@@ -34,6 +34,8 @@ art.update(SourceBoard())
 art.update(ElectricityMeter())
 art.update(WeightMeter())
 art.update(RepairMeter())
+
+art.update(ElevatorLine())
 
 electricity = 3
 weight = 150
@@ -75,6 +77,8 @@ floor_moving_down_3 = floor_pos_3[1]
 
 elevator_speed = 10
 
+electricity_charge_timer = 3
+
 moving_down_trigger = False
 
 while True:
@@ -115,7 +119,9 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
-                
+            
+    RenderElevatorLine(screen, art)
+
     RenderButtonFloor0(screen, art)
     RenderButtonFloor1(screen, art)
     RenderButtonFloor2(screen, art)

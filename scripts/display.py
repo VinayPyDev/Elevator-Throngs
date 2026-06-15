@@ -101,6 +101,10 @@ def RenderFloor2Marker(screen, art):
 def RenderFloor3Marker(screen, art):
     screen.blit(art["floor3marker"], (1130, 0))
 
+# Elevator Line
+def RenderElevatorLine(screen, art):
+    screen.blit(art["line"], (545, 0))
+
 # Source Board
 def RenderSourceBoard(screen, art):
     screen.blit(art["source_board"], (1120, 200))
