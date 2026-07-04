@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 # State system import
 from state import StateSystem, sprites
@@ -16,6 +17,10 @@ from display import RenderNoElectricity, Render1Electricity, Render2Electricity,
 from display import Render150Weight, Render250Weight, Render300Weight, Render350Weight, Render400Weight
 # Repair import from display
 from display import Render0Repair, Render1Repair, Render2Repair, Render3Repair, Render4Repair, Render5Repair
+
+# Worker imgs and animations
+from entity import worker_frames, brown_worker_frames, grey_worker_frames
+import entity
 
 pygame.init()
 
@@ -36,6 +41,14 @@ art.update(WeightMeter())
 art.update(RepairMeter())
 
 art.update(ElevatorLine())
+
+# workers pos
+worker_pos = [
+    # at floor 0
+    (random.randint(12, 1275), 580), (random.randint(60, 875), 580), (random.randint(34, 972), 580)
+]
+worker_state = "moving"
+is_worker_moving = True
 
 electricity = 3
 weight = 150
@@ -119,7 +132,12 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
-            
+
+    entity.anim_timer += dt * 1000
+    if entity.anim_timer >= entity.frame_duration:
+        entity.current_frame = (entity.current_frame + 1) % len(worker_frames)
+        entity.anim_timer = 0
+
     RenderElevatorLine(screen, art)
 
     RenderButtonFloor0(screen, art)
@@ -256,6 +274,12 @@ while True:
         floor = 3
         elevator_speed = 0
         in_floor_3 = False
+
+    if is_worker_moving:
+        for x, y in worker_pos:
+            screen.blit(worker_frames[entity.current_frame], (x, y))
+            screen.blit(brown_worker_frames[entity.current_frame], (x, y))
+            screen.blit(grey_worker_frames[entity.current_frame], (x, y))
 
     image = StateSystem(state, frame)
     screen.blit(image, pos)    

@@ -91,5 +91,3 @@ def RepairMeter():
         "repair4": pygame.transform.scale(pygame.image.load(resource_path("data/repair4.png")).convert_alpha(), (100, 100)),
         "repair5": pygame.transform.scale(pygame.image.load(resource_path("data/repair5.png")).convert_alpha(), (100, 100))
     }
-
-# workers 
