@@ -45,8 +45,8 @@ art.update(ElevatorLine())
 # workers pos
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
-    # at floor 0
-    (random.randint(12, 1275), 580), (random.randint(60, 875), 580), (random.randint(34, 972), 580)
+    # [at floor 0]
+    [random.randint(12, 1275), 580], [random.randint(60, 875), 580], [random.randint(34, 972), 580]
 ]
 worker_state = "moving"
 is_worker_moving = True
@@ -145,7 +145,24 @@ while True:
 
     if is_worker_moving:
         for worker in worker_pos:
-            worker[0] += 123 * dt
+            worker[0] += 23 * dt
+            # worker[1] += 34 * dt
+            # worker[2] -= 53 * dt
+
+            if worker[0] >= 1280:
+                worker[0] -= 23 * dt
+            elif worker[0] <= 0:
+                worker[0] += 23 * dt
+
+            # if worker[1] >= 1280:
+            #     worker[1] -= 34 * dt
+            # elif worker[1] <= 0:
+            #     worker[1] += 34 * dt
+
+            # # if worker[2] >= 1280:
+            # #     worker[2] -= 53 * dt
+            # # elif worker[2] <= 0:
+            # #     worker[2] += 53 * dt
 
     entity.anim_timer += dt * 1000
     if entity.anim_timer >= entity.frame_duration:
