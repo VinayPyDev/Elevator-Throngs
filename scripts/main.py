@@ -43,6 +43,7 @@ art.update(RepairMeter())
 art.update(ElevatorLine())
 
 # workers pos
+worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
     # at floor 0
     (random.randint(12, 1275), 580), (random.randint(60, 875), 580), (random.randint(34, 972), 580)
@@ -132,6 +133,19 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
+
+    worker_move_timer -= dt
+    if worker_move_timer <= 0:
+        is_worker_moving = not is_worker_moving
+
+        if is_worker_moving:
+            worker_move_timer = random.uniform(2, 5)
+        else:
+            worker_move_timer = random.uniform(0.5, 2)
+
+    if is_worker_moving:
+        for worker in worker_pos:
+            worker[0] += 123 * dt
 
     entity.anim_timer += dt * 1000
     if entity.anim_timer >= entity.frame_duration:
