@@ -6,10 +6,10 @@ import random
 from state import StateSystem, sprites
 
 # Asset imports
-from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter, ElevatorLine
+from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter, ElevatorLine, FloorBG
 from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
 from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
-from display import RenderSourceBoard, RenderElevatorLine
+from display import RenderSourceBoard, RenderElevatorLine, RenderBG1
 
 # Electricity import from display
 from display import RenderNoElectricity, Render1Electricity, Render2Electricity, Render3Electricity, Render4Electricity, Render5Electricity
@@ -41,12 +41,13 @@ art.update(WeightMeter())
 art.update(RepairMeter())
 
 art.update(ElevatorLine())
+art.update(FloorBG())
 
 # workers pos
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
     # [at floor 0]
-    [random.randint(12, 1275), 580], [random.randint(60, 875), 580], [random.randint(34, 972), 580]
+    [random.randint(12, 1000), 580], [random.randint(60, 875), 580], [random.randint(34, 972), 580]
 ]
 worker_state = "moving"
 is_worker_moving = True
@@ -101,6 +102,8 @@ while True:
     mouse_pos = pygame.mouse.get_pos()
     screen.fill((0, 0, 0))
 
+    RenderBG1(screen, art)
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -146,23 +149,11 @@ while True:
     if is_worker_moving:
         for worker in worker_pos:
             worker[0] += 23 * dt
-            # worker[1] += 34 * dt
-            # worker[2] -= 53 * dt
 
-            if worker[0] >= 1280:
+            if worker[0] >= 1100:
                 worker[0] -= 23 * dt
             elif worker[0] <= 0:
                 worker[0] += 23 * dt
-
-            # if worker[1] >= 1280:
-            #     worker[1] -= 34 * dt
-            # elif worker[1] <= 0:
-            #     worker[1] += 34 * dt
-
-            # # if worker[2] >= 1280:
-            # #     worker[2] -= 53 * dt
-            # # elif worker[2] <= 0:
-            # #     worker[2] += 53 * dt
 
     entity.anim_timer += dt * 1000
     if entity.anim_timer >= entity.frame_duration:
@@ -306,13 +297,13 @@ while True:
         elevator_speed = 0
         in_floor_3 = False
 
+    image = StateSystem(state, frame)
+    screen.blit(image, pos)    
+
     if is_worker_moving:
         for x, y in worker_pos:
             screen.blit(worker_frames[entity.current_frame], (x, y))
             screen.blit(brown_worker_frames[entity.current_frame], (x, y))
             screen.blit(grey_worker_frames[entity.current_frame], (x, y))
-
-    image = StateSystem(state, frame)
-    screen.blit(image, pos)    
 
     pygame.display.update()

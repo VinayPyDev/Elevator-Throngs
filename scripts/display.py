@@ -146,3 +146,9 @@ def Render4Repair(screen, art):
     screen.blit(art["repair4"], (1140, 500))
 def Render5Repair(screen, art):
     screen.blit(art["repair5"], (1140, 500))
+
+# [Render Calls BGS]
+def RenderBG1(screen, art):
+    screen.blit(art["bg_1"], (0, 480))
+def RenderBG2(screen, art):
+    screen.blit(art["bg_2"], (0, 380))

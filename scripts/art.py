@@ -91,3 +91,10 @@ def RepairMeter():
         "repair4": pygame.transform.scale(pygame.image.load(resource_path("data/repair4.png")).convert_alpha(), (100, 100)),
         "repair5": pygame.transform.scale(pygame.image.load(resource_path("data/repair5.png")).convert_alpha(), (100, 100))
     }
+
+# [Floor Backgrounds]
+def FloorBG():
+    return {
+        "bg_1": pygame.image.load(resource_path("data/floor1.png")).convert_alpha(), 
+        "bg_2": pygame.image.load(resource_path("data/floor2.png")).convert_alpha()
+    }
