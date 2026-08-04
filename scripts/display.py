@@ -67,27 +67,21 @@ def RenderElevatorDown():
 def RenderButtonFloor0(screen, art):
     screen.blit(art["button1"], (560 - 20, 642 - 8))
 def RenderButtonFloor1(screen, art):
-    screen.blit(art["button1"], (560 - 20, 532))
-def RenderButtonFloor2(screen, art):
-    screen.blit(art["button1"], (560 - 20, 426))
+    screen.blit(art["button1"], (560 - 20, 326))
 def RenderButtonFloor3(screen, art):
     screen.blit(art["button1"], (560 - 20, 326))
 
 def RenderButtonMovingUp(screen, art):
     screen.blit(art["button2"], (560 - 20, 642 - 8))
 def RenderButtonMovingUp1(screen, art):
-    screen.blit(art["button2"], (560 - 20, 532))
-def RenderButtonMovingUp2(screen, art):
-    screen.blit(art["button2"], (560 - 20, 426))
+    screen.blit(art["button2"], (560 - 20, 326))
 def RenderButtonMovingUp3(screen, art):
     screen.blit(art["button2"], (560 - 20, 326))
 
 def RenderButtonMovingDown(screen, art):
     screen.blit(art["button3"], (560 - 20, 642 - 8))
 def RenderButtonMovingDown1(screen, art):
-    screen.blit(art["button3"], (560 - 20, 532))
-def RenderButtonMovingDown2(screen, art):
-    screen.blit(art["button3"], (560 - 20, 426))
+    screen.blit(art["button3"], (560 - 20, 326))
 def RenderButtonMovingDown3(screen, art):
     screen.blit(art["button3"], (560 - 20, 326))
 
@@ -149,6 +143,6 @@ def Render5Repair(screen, art):
 
 # [Render Calls BGS]
 def RenderBG1(screen, art):
-    screen.blit(art["bg_1"], (0, 480))
+    screen.blit(art["bg_1"], (0, 415))
 def RenderBG2(screen, art):
-    screen.blit(art["bg_2"], (0, 380))
+    screen.blit(art["bg_2"], (0, 120))

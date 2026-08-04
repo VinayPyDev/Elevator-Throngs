@@ -7,9 +7,9 @@ from state import StateSystem, sprites
 
 # Asset imports
 from art import Buttons, FloorMarkers, SourceBoard, ElectricityMeter, WeightMeter, RepairMeter, ElevatorLine, FloorBG
-from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor2, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown2, RenderButtonMovingDown3
-from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp2, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
-from display import RenderSourceBoard, RenderElevatorLine, RenderBG1
+from display import RenderButtonFloor0, RenderButtonFloor1, RenderButtonFloor3, RenderButtonMovingDown, RenderButtonMovingDown1, RenderButtonMovingDown3
+from display import RenderButtonMovingUp, RenderButtonMovingUp1, RenderButtonMovingUp3, RenderFloor0Marker, RenderFloor1Marker, RenderFloor2Marker, RenderFloor3Marker
+from display import RenderSourceBoard, RenderElevatorLine, RenderBG1, RenderBG2
 
 # Electricity import from display
 from display import RenderNoElectricity, Render1Electricity, Render2Electricity, Render3Electricity, Render4Electricity, Render5Electricity
@@ -47,7 +47,7 @@ art.update(FloorBG())
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
     # [at floor 0]
-    [random.randint(12, 1000), 580], [random.randint(60, 875), 580], [random.randint(34, 972), 580]
+    [random.randint(12, 1000), 650], [random.randint(60, 875), 650], [random.randint(34, 972), 650]
 ]
 worker_state = "moving"
 is_worker_moving = True
@@ -69,9 +69,9 @@ state = "Idle_ground"
 pos_tpl = (560, 580)
 pos = list(pos_tpl)
 
-floor_pos_1_tpl = (560, 480)
-floor_pos_2_tpl = (560, 380)
-floor_pos_3_tpl = (560, 280)
+floor_pos_1_tpl = (560, 280)
+floor_pos_2_tpl = (560, 80)
+floor_pos_3_tpl = (560, -280)
 
 floor_pos_1 = list(floor_pos_1_tpl)
 floor_pos_2 = list(floor_pos_2_tpl)
@@ -102,6 +102,7 @@ while True:
     mouse_pos = pygame.mouse.get_pos()
     screen.fill((0, 0, 0))
 
+    RenderBG2(screen, art)
     RenderBG1(screen, art)
 
     for event in pygame.event.get():
@@ -164,7 +165,6 @@ while True:
 
     RenderButtonFloor0(screen, art)
     RenderButtonFloor1(screen, art)
-    RenderButtonFloor2(screen, art)
     RenderButtonFloor3(screen, art)
 
     if state == "moving_up":
