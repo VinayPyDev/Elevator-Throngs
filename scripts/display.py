@@ -14,7 +14,7 @@ class ElevatorUp():
         self.sheet = image
 
     def get_image(self, frame, width, height, scale, color, x_offset=0):
-        image = pygame.Surface((width, height))  
+        image = pygame.Surface((width, height), pygame.SRCALPHA)  
         image.fill(color)
         image.blit(self.sheet, (0, 0), (x_offset + frame * width, 0, width, height))
         image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
@@ -22,13 +22,13 @@ class ElevatorUp():
         return image
     
 def RenderElevatorUp():
-    img = pygame.image.load(resource_path("data/Sprite-0001-sheet.png")).convert()  
+    img = pygame.image.load(resource_path("data/Sprite-0001-sheet.png")).convert_alpha()  
     SpriteSheet = ElevatorUp(img)
     frames = 14
-    width, height = 64, 104
+    width, height = 64.000001, 104
     x_offset = 29
     scale = 2.0
-    colorkey = (0, 0, 0) 
+    colorkey = (255, 255, 255)
 
     animation_list = []
     for i in range(frames):
@@ -41,7 +41,7 @@ class ElevatorDown():
         self.sheet = image
 
     def get_image(self, frame, width, height, scale, color, x_offset=0):
-        image = pygame.Surface((width, height))  
+        image = pygame.Surface((width, height), pygame.SRCALPHA)  
         image.fill(color)
         image.blit(self.sheet, (0, 0), (x_offset + frame * width, 0, width, height))
         image = pygame.transform.scale(image, (int(width * scale), int(height * scale)))
@@ -49,13 +49,13 @@ class ElevatorDown():
         return image
     
 def RenderElevatorDown():
-    img = pygame.image.load(resource_path("data/Sprite-0001-2-sheet.png")).convert()  
+    img = pygame.image.load(resource_path("data/Sprite-0001-2-sheet.png")).convert_alpha()  
     SpriteSheet = ElevatorDown(img)
     frames = 14
-    width, height = 64, 104
+    width, height = 64.000001, 104
     x_offset = 29
     scale = 2.0
-    colorkey = (0, 0, 0)  
+    colorkey = (255, 255, 255) 
 
     animation_list = []
     for i in range(frames):
