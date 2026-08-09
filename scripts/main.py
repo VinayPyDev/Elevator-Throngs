@@ -47,8 +47,12 @@ art.update(FloorBG())
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
     # [at floor 0]
-    [random.randint(12, 1000), 650], [random.randint(60, 875), 650], [random.randint(34, 972), 650]
+    [random.randint(12, 1000), 650], [random.randint(60, 875), 650], [random.randint(34, 972), 650],
+
+    # [at floor 1]
+    [random.randint(12, 1000), 345], [random.randint(60, 875), 345], [random.randint(60, 875), 345]
 ]
+
 worker_state = "moving"
 is_worker_moving = True
 
