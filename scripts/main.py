@@ -21,6 +21,7 @@ from display import Render0Repair, Render1Repair, Render2Repair, Render3Repair, 
 # Worker imgs and animations
 from entity import worker_frames, brown_worker_frames, grey_worker_frames
 import entity
+from entity import *
 
 pygame.init()
 
@@ -43,6 +44,11 @@ art.update(RepairMeter())
 art.update(ElevatorLine())
 art.update(FloorBG())
 
+# [worker img]
+art.update(LoadWorkerBlue())
+art.update(LoadWorkerBrown())
+art.update(LoadWorkerGrey())
+
 # workers pos
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
@@ -53,8 +59,13 @@ worker_pos = [
     [random.randint(12, 1000), 345], [random.randint(60, 875), 345], [random.randint(60, 875), 345]
 ]
 
+worker_rects = [
+    pygame.Rect(x, y, 63, 64)
+    for x, y in worker_pos
+]
 worker_state = "moving"
 is_worker_moving = True
+worker_direction = ["right"] * len(worker_pos)
 
 electricity = 3
 weight = 150
@@ -160,10 +171,38 @@ while True:
             elif worker[0] <= 0:
                 worker[0] += 23 * dt
 
+    for i, worker in enumerate(worker_pos):
+        worker_rects[i].topleft = worker
+
     entity.anim_timer += dt * 1000
     if entity.anim_timer >= entity.frame_duration:
         entity.current_frame = (entity.current_frame + 1) % len(worker_frames)
         entity.anim_timer = 0
+
+    for i, worker in enumerate(worker_pos):
+
+        if worker_direction[i] == "right":
+            worker[0] += 23 * dt
+
+            if worker_rects[i].right >= 545:
+                worker_direction[i] = "left"
+
+        elif worker_direction[i] == "left":
+            worker[0] -= 23 * dt
+
+            if worker_rects[i].left <= 0:
+                worker_direction[i] = "right"
+
+        worker_rects[i].topleft = worker
+        
+    if worker_direction[i] == "right":
+        worker[0] += 23 * dt
+
+        if worker_rects[i].right >= 545:
+            worker_direction[i] = "left"
+
+    elif worker_direction[i] == "left":
+        worker[0] -= 23 * dt
 
     RenderElevatorLine(screen, art)
 
@@ -176,8 +215,6 @@ while True:
             RenderButtonMovingUp(screen, art)
         elif floor == 1:
             RenderButtonMovingUp1(screen, art)
-        elif floor == 2:
-            RenderButtonMovingUp2(screen, art)
         elif floor == 3:
             RenderButtonMovingUp3(screen, art)
     if state == "moving_down":
@@ -185,8 +222,6 @@ while True:
             RenderButtonMovingDown(screen, art)
         elif floor == 1:
             RenderButtonMovingDown1(screen, art)
-        elif floor == 2:
-            RenderButtonMovingDown2(screen, art)
         elif floor == 3:
             RenderButtonMovingDown3(screen, art)
 
@@ -304,10 +339,31 @@ while True:
     image = StateSystem(state, frame)
     screen.blit(image, pos)    
 
-    if is_worker_moving:
-        for x, y in worker_pos:
-            screen.blit(worker_frames[entity.current_frame], (x, y))
-            screen.blit(brown_worker_frames[entity.current_frame], (x, y))
-            screen.blit(grey_worker_frames[entity.current_frame], (x, y))
+    if worker_state == "moving":
+        is_worker_moving = True
+    else:
+        is_worker_moving = False
 
+    if is_worker_moving:
+        for i, (x, y) in enumerate(worker_pos):
+            if worker_direction[i] == "right":
+                screen.blit(worker_frames[entity.current_frame], (x, y))
+                screen.blit(brown_worker_frames[entity.current_frame], (x, y))
+                screen.blit(grey_worker_frames[entity.current_frame], (x, y))
+
+            elif worker_direction[i] == "left":
+                screen.blit(worker_left_frames[entity.current_frame], (x, y))
+                screen.blit(brown_worker_left_frames[entity.current_frame], (x, y))
+                screen.blit(grey_worker_left_frames[entity.current_frame], (x, y))
+
+    if not is_worker_moving:
+        for x, y in worker_pos:
+            if worker_direction[i] == "right":
+                RenderWorkerBlue(screen, art, pos=(x, y))
+                RenderWorkerBrown(screen, art, pos=(x, y))
+                RenderWorkerGrey(screen, art, pos=(x, y))
+            elif worker_direction[i] == "left":
+                RenderWorkerBlueLeft(screen, art, pos=(x, y))
+                RenderWorkerBrownLeft(screen, art, pos=(x, y))
+                RenderWorkerGreyLeft(screen, art, pos=(x, y))
     pygame.display.update()
