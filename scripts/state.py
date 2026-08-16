@@ -1,6 +1,6 @@
 import pygame
 from art import RenderElevatorIdle1st, RenderElevatorIdle2nd, RenderElevatorIdle3rd, RenderElevatorIdleGround
-from display import RenderElevatorUp, RenderElevatorDown
+from display import RenderElevatorUp, RenderElevatorDown, RenderElevatorOpen, RenderElevatorClose
 
 sprites = {}
 
@@ -11,6 +11,9 @@ sprites.update(RenderElevatorIdle3rd())
 
 sprites["moving_up"] = RenderElevatorUp()
 sprites["moving_down"] = RenderElevatorDown()
+
+sprites["opening"] = RenderElevatorOpen()
+sprites["closing"] = RenderElevatorClose()
 
 sprite = "Idle_ground"
 

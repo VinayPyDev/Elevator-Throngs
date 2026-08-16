@@ -53,10 +53,10 @@ art.update(LoadWorkerGrey())
 worker_move_timer = random.uniform(1.5, 4.0)
 worker_pos = [
     # [at floor 0]
-    [random.randint(12, 1000), 650], [random.randint(60, 875), 650], [random.randint(34, 972), 650],
+    [random.randint(12, 545), 650], [random.randint(702, 1100), 650], [random.randint(34, 972), 650],
 
     # [at floor 1]
-    [random.randint(12, 1000), 345], [random.randint(60, 875), 345], [random.randint(60, 875), 345]
+    [random.randint(12, 545), 345], [random.randint(32, 545), 345], [random.randint(702, 1100), 345]
 ]
 
 worker_rects = [
@@ -76,9 +76,9 @@ last_update = pygame.time.get_ticks()
 animation_cooldown = 200
 
 idle_x = 560
-moving_x = 560 + 18
+moving_x = 560 -2
 
-x_18 = 18
+x_18 = -2
 
 state = "Idle_ground"
 pos_tpl = (560, 580)
@@ -187,14 +187,20 @@ while True:
             if worker_rects[i].right >= 545:
                 worker_direction[i] = "left"
 
+            if worker_rects[i].left >= 1100:
+                worker_direction[i] == "left"
+
         elif worker_direction[i] == "left":
             worker[0] -= 23 * dt
 
             if worker_rects[i].left <= 0:
                 worker_direction[i] = "right"
 
+            if worker_rects[i].left < 702:
+                worker_direction[i] = "left"
+            
         worker_rects[i].topleft = worker
-        
+
     if worker_direction[i] == "right":
         worker[0] += 23 * dt
 
@@ -314,12 +320,15 @@ while True:
         floor = 0
         frame = 0
         elevator_speed = 0
+        state = "opening"
 
     if in_floor_1:
         pos = [idle_x, floor_pos_1_tpl[1]]
         state = "Idle_1st"
         floor = 1
         elevator_speed = 0
+        state = "opening"
+        
         in_floor_1 = False
 
     if in_floor_2:
