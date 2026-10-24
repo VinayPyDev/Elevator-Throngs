@@ -2,6 +2,8 @@ import pygame
 import sys
 import os
 
+from EntityState import WorkerStateMachine, WorkerWalkState
+
 pygame.init()
 
 def resource_path(relative_path):
@@ -85,3 +87,48 @@ for angle in animation_angles:
 current_frame = 0
 anim_timer = 0
 frame_duration = 100
+
+class Worker(pygame.sprite.Sprite):
+    def __init__(self, x, y, floor, worker_type, art_dict, elevator_ref=None):
+        super().__init__()
+        self.pos = [x, y]
+        self.floor = floor
+        self.type = worker_type
+        self.speed = 23
+        self.direction = 1
+        self.is_moving = True
+        self.art = art_dict
+        self.elevator_ref = elevator_ref
+
+        self.rect = pygame.Rect(x, y, 63, 64)
+
+        self.state_machine = WorkerStateMachine()
+        self.state_machine.change_state(WorkerWalkState(self))
+
+    def update(self, dt):
+        self.state_machine.update(dt)
+        
+    def draw(self, screen, anim_frame):
+        if self.type == "blue":
+            if self.is_moving:
+                frames = worker_frames if self.direction == 1 else worker_left_frames
+                screen.blit(frames[anim_frame % len(frames)], self.pos)
+            else:
+                img = self.art["blue_right"] if self.direction == 1 else self.art["blue_left"]
+                screen.blit(img, self.pos)
+                
+        elif self.type == "brown":
+            if self.is_moving:
+                frames = brown_worker_frames if self.direction == 1 else brown_worker_left_frames
+                screen.blit(frames[anim_frame % len(frames)], self.pos)
+            else:
+                img = self.art["brown_right"] if self.direction == 1 else self.art["brown_left"]
+                screen.blit(img, self.pos)
+                
+        elif self.type == "grey":
+            if self.is_moving:
+                frames = grey_worker_frames if self.direction == 1 else grey_worker_left_frames
+                screen.blit(frames[anim_frame % len(frames)], self.pos)
+            else:
+                img = self.art["grey_right"] if self.direction == 1 else self.art["grey_left"]
+                screen.blit(img, self.pos)
